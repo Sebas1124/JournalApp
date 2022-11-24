@@ -23,9 +23,10 @@ const formValidations = {
 export const RegisterPage = () => {
 
   const dispatch = useDispatch();
+  const { status, errorMessage } = useSelector( state => state.auth );
+
   const [ formSubmitted, setFormSubmitted ] = useState(false);
 
-  const { status, errorMessage } = useSelector( state => state.auth );
   const isCheckingAuthentication = useMemo(() => status === 'checking', [status]);
 
   const { 
@@ -38,9 +39,10 @@ export const RegisterPage = () => {
     setFormSubmitted(true);
 
     if ( !isFormValid ) return;
-
+    
     dispatch( startCreatingUserWithEmailPassword( formState ) )
   }
+  
 
   return (
     <AuthLayout title="Crear cuenta">
