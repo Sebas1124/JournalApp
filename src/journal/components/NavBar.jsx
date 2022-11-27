@@ -1,16 +1,27 @@
-import { AppBar, Grid, IconButton, Toolbar, Typography } from '@mui/material';
+import { AppBar, Grid, IconButton, Toolbar, Typography, duration } from '@mui/material';
 import { LogoutOutlined, MenuOutlined } from '@mui/icons-material';
+import { useDispatch } from 'react-redux';
+import { startLogout } from './../../store/auth';
+
+import { AnimatePresence, motion } from 'framer-motion';
 
 
 export const NavBar = ({ drawerWidth = 240 }) => {
+
+    const dispatch = useDispatch();
+
+    const onLogout = () => {
+        dispatch( startLogout() )
+    }
+
   return (
     <AppBar 
         position='fixed'
         sx={{ 
             width: { sm: `calc(100% - ${ drawerWidth }px)` },
             ml: { sm: `${ drawerWidth }px` }
-         }}
-    >
+        }}
+        >
         <Toolbar>
             <IconButton
                 color='inherit'
@@ -23,7 +34,7 @@ export const NavBar = ({ drawerWidth = 240 }) => {
             <Grid container direction='row' justifyContent='space-between' alignItems='center'>
                 <Typography variant='h6' noWrap component='div'> JournalApp </Typography>
 
-                <IconButton color='error'>
+                <IconButton color='error' onClick={ onLogout }>
                     <LogoutOutlined />
                 </IconButton>
             </Grid>
