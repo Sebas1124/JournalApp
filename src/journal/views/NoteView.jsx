@@ -34,8 +34,8 @@ export const NoteView = () => {
     }, [ messageSaved ])
     
     const onSaveNote = () => {
-
         dispatch( startSaveNote() );
+        setFilesCount( 0 );
     }
 
     const onFileInputChange = ({ target }) => {
