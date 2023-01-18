@@ -17,7 +17,7 @@ export const SideBar = ({ drawerWidth = 240 }) => {
   return (
     <Box
         component='nav'
-        hidden='true'
+        hidden={ true }
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
     >
         <Drawer
