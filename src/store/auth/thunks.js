@@ -1,4 +1,4 @@
-import { clearNoteLogout } from "../journal";
+import { clearNoteLogout, closeSideBarMenu, openSideBarMenu } from "../journal";
 import { checkingCredentials, logout, login } from "./";
 import { RegisterUserWithEmailPassword, signInWithGoogle, LogInWithEmailPassword, LogoutFirebase } from './../../firebase/providers';
 
@@ -56,5 +56,16 @@ export const startLogout = () => {
 
         dispatch( logout({}) );
 
+    }
+}
+
+export const OnSideBar = () => {
+    return async( dispatch ) => {
+        dispatch( openSideBarMenu() );
+    }
+}
+export const CloseSideBar = () => {
+    return async( dispatch ) => {
+        dispatch( closeSideBarMenu() );
     }
 }
